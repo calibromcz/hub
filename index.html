@@ -2,22 +2,27 @@
 <html lang="it" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Flow & Pulse — Due app essenziali per la tua giornata</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>00 Work — Flow & Pulse</title>
   <meta name="description" content="Finanza personale e salute, ripensate con la semplicità che mancava. Si aprono in un attimo, si installano come vere app e rispettano i tuoi dati.">
   <meta name="theme-color" content="#090F1E">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://calibromcz.github.io/hub/">
-  <meta property="og:title" content="Flow & Pulse — Due app essenziali per la tua giornata">
+  <meta property="og:title" content="00 Work — Flow & Pulse">
   <meta property="og:description" content="Finanza personale e salute, ripensate con la semplicità che mancava. Si aprono in un attimo, si installano come vere app e rispettano i tuoi dati.">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://calibromcz.github.io/hub/">
-  <meta name="twitter:title" content="Flow & Pulse — Due app essenziali per la tua giornata">
+  <meta name="twitter:title" content="00 Work — Flow & Pulse">
   <meta name="twitter:description" content="Finanza personale e salute, ripensate con la semplicità che mancava. Si aprono in un attimo, si installano come vere app e rispettano i tuoi dati.">
+
+  <!-- Apple Mobile Web App -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="00 Work">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -31,9 +36,9 @@
   <!-- Header Fisso & Sticky Glass -->
   <header class="site-header">
     <div class="header-inner container">
-      <a href="#" class="brand-link" aria-label="Home Flow & Pulse Hub">
+      <a href="#" class="brand-link" aria-label="Home 00 Work">
         <span class="brand-dot" aria-hidden="true"></span>
-        <span class="brand-text">Flow & Pulse</span>
+        <span class="brand-text">00 Work</span>
       </a>
 
       <div class="header-actions">
@@ -98,23 +103,7 @@
         <article class="glass-card app-card app-card-flow">
           <div class="card-header">
             <div class="app-icon-wrapper">
-              <svg class="app-squircle-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Icona Flow">
-                <rect width="64" height="64" rx="14" fill="url(#flowBgGrad)"/>
-                <circle cx="32" cy="32" r="27.5" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-                <!-- Freccia circolare verde smeraldo (entrata / crescita) -->
-                <path d="M22 32C22 26.477 26.477 22 32 22C35.5 22 38.6 23.8 40.4 26.5" stroke="#30D158" stroke-width="3.5" stroke-linecap="round"/>
-                <polyline points="37 27 41.5 27 41.5 22.5" stroke="#30D158" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <!-- Freccia circolare rosso corallo (uscita / flusso) -->
-                <path d="M42 32C42 37.523 37.523 42 32 42C28.5 42 25.4 40.2 23.6 37.5" stroke="#FF453A" stroke-width="3.5" stroke-linecap="round"/>
-                <polyline points="27 37 22.5 37 22.5 41.5" stroke="#FF453A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="32" cy="32" r="3" fill="#FFFFFF"/>
-                <defs>
-                  <linearGradient id="flowBgGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#14213d"/>
-                    <stop offset="1" stop-color="#070c18"/>
-                  </linearGradient>
-                </defs>
-              </svg>
+              <img src="assets/flow-icon.svg" alt="Icona Flow" class="app-squircle-icon" width="64" height="64" loading="eager">
             </div>
             <div class="app-identity">
               <span class="category-badge flow-badge">Finanza Personale</span>
@@ -182,18 +171,7 @@
         <article class="glass-card app-card app-card-pulse">
           <div class="card-header">
             <div class="app-icon-wrapper">
-              <svg class="app-squircle-icon pulse-glow-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Icona Pulse">
-                <rect width="64" height="64" rx="14" fill="url(#pulseBgGrad)"/>
-                <circle cx="32" cy="32" r="27.5" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-                <!-- Tracciato battito cardiaco geometrico corallo -->
-                <path d="M12 33H22L26 21L32 45L38 27L42 33H52" stroke="#FF5E57" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <defs>
-                  <linearGradient id="pulseBgGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#182747"/>
-                    <stop offset="1" stop-color="#0E1A36"/>
-                  </linearGradient>
-                </defs>
-              </svg>
+              <img src="assets/pulse-icon.svg" alt="Icona Pulse" class="app-squircle-icon" width="64" height="64" loading="eager">
             </div>
             <div class="app-identity">
               <span class="category-badge pulse-badge">Salute & Benessere</span>
@@ -432,7 +410,7 @@
   <footer class="site-footer">
     <div class="footer-inner container">
       <div class="footer-brand">
-        <p class="footer-copy">© 2026 Flow & Pulse Hub</p>
+        <p class="footer-copy">© 2026 00 Work · Progetti sviluppati da Hattori Hanto</p>
       </div>
       <nav class="footer-nav" aria-label="Link diretti alle applicazioni">
         <a href="https://calibromcz.github.io/Flow/" target="_blank" rel="noopener noreferrer" class="footer-link">Flow</a>

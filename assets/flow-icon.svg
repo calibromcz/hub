@@ -1,0 +1,31 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sfondo Apple PWA con angoli arrotondati e padding arioso -->
+  <rect width="180" height="180" rx="40" fill="#1C1C1E" />
+  
+  <!-- Gruppo Simbolo FLOW centrato matematicamente (scala 0.72 per 24% di padding dai bordi) -->
+  <g transform="translate(90, 90) scale(0.72) translate(-60, -60)">
+    <!-- Semicerchio Sinistro - Rosso Corallo (#F25449) -->
+    <path
+      d="M 49.6 98.6 A 40 40 0 0 1 49.6 21.4"
+      stroke="#F25449"
+      stroke-width="10.5"
+      stroke-linecap="butt"
+    />
+    <polygon
+      points="47,9 67,19 51,33"
+      fill="#F25449"
+    />
+
+    <!-- Semicerchio Destro - Verde Menta (#32B87A) -->
+    <path
+      d="M 70.4 21.4 A 40 40 0 0 1 70.4 98.6"
+      stroke="#32B87A"
+      stroke-width="10.5"
+      stroke-linecap="butt"
+    />
+    <polygon
+      points="73,111 53,101 69,87"
+      fill="#32B87A"
+    />
+  </g>
+</svg>
