@@ -1,0 +1,1023 @@
+/* ==========================================================================
+   Apple Cupertino & Liquid Glass Design System
+   Flow & Pulse Hub Landing Page
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS Custom Properties / Theme Tokens
+   -------------------------------------------------------------------------- */
+:root {
+  /* Fonts */
+  --font-apple: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+
+  /* Transitions */
+  --ease-apple: cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-fast: 0.2s var(--ease-apple);
+  --transition-normal: 0.35s var(--ease-apple);
+  --transition-slow: 0.6s var(--ease-apple);
+
+  /* Radius */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  /* App Accents */
+  --flow-emerald: #30D158;
+  --flow-coral: #FF453A;
+  --pulse-coral: #FF5E57;
+  --pulse-night: #0E1A36;
+}
+
+/* Dark Theme (Default) - Midnight Blue Cupertino */
+html[data-theme="dark"] {
+  --bg-canvas: #090F1E;
+  --bg-canvas-radial: #13203D;
+  --text-primary: #FFFFFF;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+
+  /* Glass tokens */
+  --glass-bg: rgba(18, 27, 49, 0.62);
+  --glass-bg-hover: rgba(26, 38, 68, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-border-hover: rgba(255, 255, 255, 0.22);
+  --glass-highlight: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 1px 2px rgba(255, 255, 255, 0.06) inset;
+  --glass-shadow-hover: 0 24px 60px rgba(0, 0, 0, 0.55), 0 1px 3px rgba(255, 255, 255, 0.12) inset;
+
+  /* Header */
+  --header-bg: rgba(9, 15, 30, 0.72);
+  --header-border: rgba(255, 255, 255, 0.08);
+
+  /* Buttons */
+  --btn-primary-bg: #FFFFFF;
+  --btn-primary-text: #090F1E;
+  --btn-primary-hover-bg: #E2E8F0;
+
+  --btn-secondary-bg: rgba(255, 255, 255, 0.08);
+  --btn-secondary-border: rgba(255, 255, 255, 0.15);
+  --btn-secondary-text: #FFFFFF;
+  --btn-secondary-hover-bg: rgba(255, 255, 255, 0.14);
+
+  /* Segmented control */
+  --segment-bg: rgba(255, 255, 255, 0.06);
+  --segment-border: rgba(255, 255, 255, 0.1);
+  --segment-active-bg: rgba(255, 255, 255, 0.16);
+  --segment-active-text: #FFFFFF;
+  --segment-inactive-text: #94A3B8;
+
+  /* Badges & Icons */
+  --badge-bg: rgba(255, 255, 255, 0.06);
+  --badge-border: rgba(255, 255, 255, 0.14);
+  --badge-text: #CBD5E1;
+
+  --card-glow-flow: rgba(48, 209, 88, 0.15);
+  --card-glow-pulse: rgba(255, 94, 87, 0.18);
+}
+
+/* Light Theme - Clean Apple Cupertino */
+html[data-theme="light"] {
+  --bg-canvas: #F5F5F7;
+  --bg-canvas-radial: #E8EDF5;
+  --text-primary: #1D1D1F;
+  --text-secondary: #515154;
+  --text-muted: #86868B;
+
+  /* Glass tokens */
+  --glass-bg: rgba(255, 255, 255, 0.68);
+  --glass-bg-hover: rgba(255, 255, 255, 0.88);
+  --glass-border: rgba(255, 255, 255, 0.8);
+  --glass-border-hover: rgba(255, 255, 255, 1);
+  --glass-highlight: rgba(255, 255, 255, 0.85);
+  --glass-shadow: 0 16px 40px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(255, 255, 255, 0.8) inset;
+  --glass-shadow-hover: 0 24px 50px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(255, 255, 255, 1) inset;
+
+  /* Header */
+  --header-bg: rgba(245, 245, 247, 0.78);
+  --header-border: rgba(0, 0, 0, 0.06);
+
+  /* Buttons */
+  --btn-primary-bg: #1D1D1F;
+  --btn-primary-text: #FFFFFF;
+  --btn-primary-hover-bg: #323236;
+
+  --btn-secondary-bg: rgba(0, 0, 0, 0.05);
+  --btn-secondary-border: rgba(0, 0, 0, 0.08);
+  --btn-secondary-text: #1D1D1F;
+  --btn-secondary-hover-bg: rgba(0, 0, 0, 0.09);
+
+  /* Segmented control */
+  --segment-bg: rgba(0, 0, 0, 0.05);
+  --segment-border: rgba(0, 0, 0, 0.06);
+  --segment-active-bg: #FFFFFF;
+  --segment-active-text: #1D1D1F;
+  --segment-inactive-text: #6E6E73;
+
+  /* Badges & Icons */
+  --badge-bg: rgba(0, 0, 0, 0.04);
+  --badge-border: rgba(0, 0, 0, 0.08);
+  --badge-text: #333336;
+
+  --card-glow-flow: rgba(48, 209, 88, 0.12);
+  --card-glow-pulse: rgba(255, 94, 87, 0.12);
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Base Elements
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-apple);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-canvas);
+  background-image: radial-gradient(circle at 50% 0%, var(--bg-canvas-radial) 0%, var(--bg-canvas) 70%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* Accessibility focus ring */
+:focus-visible {
+  outline: 2px solid #0A84FF;
+  outline-offset: 3px;
+}
+
+/* Layout container */
+.container {
+  width: 100%;
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* Ambient glow accents behind content */
+.bg-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.3;
+}
+
+.bg-glow-primary {
+  width: 500px;
+  height: 500px;
+  top: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, #1e3a8a 0%, transparent 70%);
+}
+
+.bg-glow-secondary {
+  width: 400px;
+  height: 400px;
+  top: 500px;
+  right: -100px;
+  background: radial-gradient(circle, #3b1d42 0%, transparent 70%);
+}
+
+html[data-theme="light"] .bg-glow {
+  opacity: 0.25;
+}
+
+/* --------------------------------------------------------------------------
+   3. Sticky Glass Header & Theme Toggle
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  background: var(--header-bg);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid var(--header-border);
+  transition: background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+.header-inner {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+}
+
+.brand-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #30D158;
+  box-shadow: 0 0 10px #30D158;
+  animation: pulseDot 3s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.75; }
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: var(--btn-secondary-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  background: var(--btn-secondary-hover-bg);
+  transform: scale(1.05);
+}
+
+.theme-toggle:active {
+  transform: scale(0.96);
+}
+
+.theme-icon {
+  width: 20px;
+  height: 20px;
+  transition: transform var(--transition-fast);
+}
+
+/* Visibility based on theme */
+html[data-theme="dark"] .icon-moon { display: none; }
+html[data-theme="dark"] .icon-sun { display: block; }
+
+html[data-theme="light"] .icon-sun { display: none; }
+html[data-theme="light"] .icon-moon { display: block; }
+
+/* --------------------------------------------------------------------------
+   4. Hero Section
+   -------------------------------------------------------------------------- */
+.hero-section {
+  position: relative;
+  z-index: 1;
+  padding-top: 56px;
+  padding-bottom: 48px;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: var(--badge-bg);
+  border: 1px solid var(--badge-border);
+  color: var(--badge-text);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #0A84FF;
+}
+
+.hero-title {
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  color: var(--text-primary);
+  margin-bottom: 18px;
+  text-wrap: balance;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.0625rem, 2vw, 1.25rem);
+  line-height: 1.5;
+  color: var(--text-secondary);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  margin-bottom: 32px;
+  text-wrap: balance;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* Base Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: var(--radius-full);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn-icon {
+  width: 18px;
+  height: 18px;
+  transition: transform var(--transition-fast);
+}
+
+.btn-primary {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+  background: var(--btn-primary-hover-bg);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.btn-primary:hover .btn-icon {
+  transform: translateY(2px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary-glass {
+  background: var(--btn-secondary-bg);
+  border-color: var(--btn-secondary-border);
+  color: var(--btn-secondary-text);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.btn-secondary-glass:hover {
+  background: var(--btn-secondary-hover-bg);
+  transform: translateY(-1px);
+}
+
+.btn-secondary-glass:active {
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   5. Liquid Glass Cards Base
+   -------------------------------------------------------------------------- */
+.glass-card {
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+  transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal), background var(--transition-normal);
+  overflow: hidden;
+}
+
+/* Specular top highlight bar */
+.glass-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--glass-highlight) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   6. Sezione B: Vetrina delle App (#apps)
+   -------------------------------------------------------------------------- */
+.apps-section {
+  position: relative;
+  z-index: 1;
+  padding-top: 32px;
+  padding-bottom: 64px;
+}
+
+.apps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.app-card {
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-shadow-hover);
+}
+
+.app-card-flow:hover {
+  box-shadow: var(--glass-shadow-hover), 0 0 30px var(--card-glow-flow);
+}
+
+.app-card-pulse:hover {
+  box-shadow: var(--glass-shadow-hover), 0 0 30px var(--card-glow-pulse);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.app-icon-wrapper {
+  flex-shrink: 0;
+}
+
+.app-squircle-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 22%;
+  display: block;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transition: transform var(--transition-normal);
+}
+
+.app-card:hover .app-squircle-icon {
+  transform: scale(1.06);
+}
+
+.app-identity {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.category-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.flow-badge {
+  background: rgba(48, 209, 88, 0.14);
+  color: #30D158;
+}
+
+.pulse-badge {
+  background: rgba(255, 94, 87, 0.14);
+  color: #FF5E57;
+}
+
+.app-title {
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.app-tagline {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+.features-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 36px;
+  flex-grow: 1;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+.feature-item strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.feature-icon-box {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+.feature-icon-box svg {
+  width: 17px;
+  height: 17px;
+  color: var(--text-primary);
+  opacity: 0.85;
+}
+
+.app-card-flow .feature-icon-box svg {
+  color: #30D158;
+}
+
+.app-card-pulse .feature-icon-box svg {
+  color: #FF5E57;
+}
+
+.card-footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-app-action {
+  width: 100%;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: var(--radius-full);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+}
+
+.btn-flow {
+  background: linear-gradient(135deg, #30D158 0%, #20993f 100%);
+  color: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(48, 209, 88, 0.35);
+}
+
+.btn-flow:hover {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(48, 209, 88, 0.45);
+}
+
+.btn-pulse {
+  background: linear-gradient(135deg, #FF5E57 0%, #D83A32 100%);
+  color: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(255, 94, 87, 0.35);
+}
+
+.btn-pulse:hover {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 94, 87, 0.45);
+}
+
+.btn-app-action:active {
+  transform: translateY(0);
+}
+
+.btn-arrow-icon {
+  width: 18px;
+  height: 18px;
+  transition: transform var(--transition-fast);
+}
+
+.btn-app-action:hover .btn-arrow-icon {
+  transform: translateX(3px);
+}
+
+.card-secondary-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: color var(--transition-fast);
+}
+
+.card-secondary-link:hover {
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   7. Sezione C: Installazione Interattiva (#install)
+   -------------------------------------------------------------------------- */
+.install-section {
+  position: relative;
+  z-index: 1;
+  padding-top: 48px;
+  padding-bottom: 64px;
+}
+
+.section-heading {
+  max-width: 640px;
+  margin: 0 auto 36px auto;
+  text-align: center;
+}
+
+.section-title {
+  font-size: clamp(1.85rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+
+/* Segmented Control iOS */
+.segmented-control-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 36px;
+}
+
+.segmented-control {
+  position: relative;
+  display: inline-flex;
+  background: var(--segment-bg);
+  border: 1px solid var(--segment-border);
+  border-radius: var(--radius-full);
+  padding: 4px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  gap: 4px;
+}
+
+.segment-btn {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: var(--radius-full);
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--segment-inactive-text);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.segment-btn.active {
+  color: var(--segment-active-text);
+}
+
+.segment-icon {
+  width: 17px;
+  height: 17px;
+}
+
+/* Glider animato che scivola sotto il tab attivo */
+.segment-glider {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  bottom: 4px;
+  width: 0;
+  border-radius: var(--radius-full);
+  background: var(--segment-active-bg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+  z-index: 1;
+  pointer-events: none;
+  transition: transform var(--transition-normal), width var(--transition-normal);
+}
+
+/* Tab Panels */
+.tab-panel {
+  display: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--transition-normal), transform var(--transition-normal);
+}
+
+.tab-panel.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.step-card {
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.step-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--badge-bg);
+  border: 1px solid var(--badge-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.step-icon-container {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: var(--btn-secondary-bg);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+.step-svg {
+  width: 28px;
+  height: 28px;
+}
+
+.step-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.step-text {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.step-text strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.step-text em {
+  font-style: normal;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   8. Sezione D: Strip Filosofia & Footer
+   -------------------------------------------------------------------------- */
+.philosophy-section {
+  position: relative;
+  z-index: 1;
+  padding-top: 16px;
+  padding-bottom: 64px;
+}
+
+.philosophy-strip {
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: var(--radius-full);
+}
+
+.philosophy-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.philosophy-icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--btn-secondary-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+}
+
+.philosophy-icon-wrap svg {
+  width: 17px;
+  height: 17px;
+}
+
+.philosophy-text {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.philosophy-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--glass-border);
+}
+
+/* Site Footer */
+.site-footer {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  border-top: 1px solid var(--header-border);
+  padding: 32px 0 40px 0;
+  background: var(--header-bg);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-copy {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.footer-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-link:hover {
+  color: var(--text-primary);
+}
+
+.footer-nav-separator {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+/* --------------------------------------------------------------------------
+   9. Responsive Breakpoints (Mobile First & Tablet)
+   -------------------------------------------------------------------------- */
+@media (max-width: 860px) {
+  .apps-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .philosophy-strip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    border-radius: var(--radius-lg);
+    padding: 24px;
+  }
+
+  .philosophy-divider {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .hero-section {
+    padding-top: 40px;
+    padding-bottom: 36px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .app-card {
+    padding: 26px 20px;
+  }
+
+  .segmented-control {
+    width: 100%;
+  }
+
+  .segment-btn {
+    flex: 1;
+    padding: 0 10px;
+    font-size: 0.875rem;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+}

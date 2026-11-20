@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="hubBg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0E1A36"/>
+      <stop offset="1" stop-color="#050811"/>
+    </linearGradient>
+    <linearGradient id="glowLine" x1="16" y1="32" x2="48" y2="32" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#30D158"/>
+      <stop offset="0.5" stop-color="#0A84FF"/>
+      <stop offset="1" stop-color="#FF5E57"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#hubBg)"/>
+  <rect width="62" height="62" x="1" y="1" rx="15" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+  <!-- Intertwined circles representing Flow (growth) & Pulse (heartbeat) -->
+  <circle cx="26" cy="32" r="11" stroke="#30D158" stroke-width="2.5" stroke-opacity="0.85"/>
+  <circle cx="38" cy="32" r="11" stroke="#FF5E57" stroke-width="2.5" stroke-opacity="0.85"/>
+  <circle cx="32" cy="32" r="2.5" fill="#FFFFFF"/>
+</svg>
